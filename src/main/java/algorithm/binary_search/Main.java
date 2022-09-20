@@ -11,7 +11,7 @@ public class Main {
         System.out.println("Array: " + Arrays.toString(arr));
 
         //итеративный подход
-        binarySearchIterative(arr, 2);
+        binarySearchIterative(arr, 7);
 
         //рекурсивный подход
         int result = binarySearchRecursive(arr, 0, arr.length - 1, 5);
@@ -20,7 +20,7 @@ public class Main {
 
     /*
         Алгоритм бинарного поиска O(log(N))
-        Метод выводит в out кол-во итераций и искомое число (если найдено)
+        Метод выводит в out кол-во итераций и индекс числа (если найдено)
         Итеративный подход
      */
     private static void binarySearchIterative(int[] arr, int number) {
@@ -29,10 +29,11 @@ public class Main {
 
         int count = 0;
         while (firstIndex <= lastIndex) {
+            count++;
             int middleIndex = (firstIndex + lastIndex) / 2;
 
             if (arr[middleIndex] == number) {
-                System.out.printf("Iterative. Number: %d, Iteration count: %d\n", arr[middleIndex], count);
+                System.out.printf("Iterative. Index: %d, Iteration count: %d\n", middleIndex, count);
                 return;
 
             } else if (arr[middleIndex] > number) {
@@ -41,11 +42,9 @@ public class Main {
             } else {
                 firstIndex = middleIndex + 1;
             }
-
-            count++;
         }
 
-        System.out.printf("Number is not found, Iteration count: %d", count);
+        System.out.printf("Number is not found, Iteration count: %d\n", count);
     }
 
     /*
